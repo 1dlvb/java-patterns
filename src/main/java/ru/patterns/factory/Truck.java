@@ -1,26 +1,32 @@
 package ru.patterns.factory;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Implementation for of RollingTransport interface for trucks
+ * @author Matushkin Anton
  */
+
 public class Truck implements RollingTransport {
 
-    private final int cruisingSpeed = 100;
+    private static final Logger LOGGER = LogManager.getLogger(Truck.class);
+    private static final int CRUISING_SPEED = 100;
+
     @Override
     public void deliver() {
-        System.out.println("Delivering by truck...");
+        LOGGER.info("Delivering by truck...");
     }
 
     @Override
     public void roll() {
-        System.out.printf("The truck [%s] is rolling.\n", this);
+        LOGGER.info("The truck [{}] is rolling.", this);
     }
 
     @Override
     public void accelerate() {
 
-        for (int currentSpeed = 0; currentSpeed < cruisingSpeed; currentSpeed += 50) {
-            System.out.printf("The car is accelerating. The cruisingSpeed is %s km/h...\n", currentSpeed);
+        for (int currentSpeed = 0; currentSpeed < CRUISING_SPEED; currentSpeed += 50) {
+            LOGGER.info("The car is accelerating. The CRUISING_SPEED is {} km/h...", currentSpeed);
         }
 
     }
@@ -28,8 +34,8 @@ public class Truck implements RollingTransport {
     @Override
     public void brake() {
 
-        for (int currentSpeed = cruisingSpeed; currentSpeed > 0; currentSpeed -= 50) {
-            System.out.printf("The car is breaking. The cruisingSpeed is %s km/h...\n", currentSpeed);
+        for (int currentSpeed = CRUISING_SPEED; currentSpeed > 0; currentSpeed -= 50) {
+            LOGGER.info("The car is breaking. The CRUISING_SPEED is {} km/h...", currentSpeed);
         }
     }
 
