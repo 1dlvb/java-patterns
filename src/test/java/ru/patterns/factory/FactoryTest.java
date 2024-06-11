@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class FactoryTest {
-        @Test
-        public void planeFactoryTest() {
+
+    @Test
+        public void isPlaneCreatedByPlaneFactoryIsInstanceOfPlaneClassTest() {
             LogisticsFactory<FlyingTransport> planeFactory = new PlaneFactory();
             FlyingTransport plane = planeFactory.createTransport();
             plane.deliver();
@@ -15,7 +16,7 @@ class FactoryTest {
             Assertions.assertTrue(plane instanceof Plane);
         }
         @Test
-        public void truckFactoryTest() {
+        public void isTruckCreatedByTruckFactoryIsInstanceOfTruckClass() {
             LogisticsFactory<RollingTransport> truckFactory = new TruckFactory();
             RollingTransport truck = truckFactory.createTransport();
             truck.deliver();
