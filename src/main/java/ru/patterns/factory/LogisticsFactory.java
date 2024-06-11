@@ -8,6 +8,7 @@ package ru.patterns.factory;
  * To specify methods for classes other than those of the Transport interface, create a new interface that extends from
  * the Transport interface. This new interface (or Transport) should be passed as a parameter to a LogisticFactory
  * @param <T> T extends Transport interface.
+ * @author Matushkin Anton
  */
 public interface LogisticsFactory<T extends Transport> {
 
