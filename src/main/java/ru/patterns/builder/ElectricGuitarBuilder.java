@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ElectricGuitarBuilder implements GuitarBuilder {
 
-    private String name;
+    private String modelName;
 
     /**
      * NULL by default.
@@ -41,8 +41,8 @@ public class ElectricGuitarBuilder implements GuitarBuilder {
     private Boolean hasWhammyBar = false;
 
     @Override
-    public GuitarBuilder setName(String name) {
-        this.name = name;
+    public GuitarBuilder setModelName(String modelName) {
+        this.modelName = modelName;
         return this;
     }
 
@@ -84,7 +84,7 @@ public class ElectricGuitarBuilder implements GuitarBuilder {
 
     @Override
     public Guitar build() {
-        return new Guitar(name, numberOfStrings, pickups, color, guitarNeckWood,
+        return new Guitar(modelName, numberOfStrings, pickups, color, guitarNeckWood,
                 guitarBodyWood, hasWhammyBar);
     }
 
