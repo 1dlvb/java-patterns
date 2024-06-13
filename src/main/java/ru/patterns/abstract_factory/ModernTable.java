@@ -2,7 +2,6 @@ package ru.patterns.abstract_factory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.patterns.factory.Plane;
 
 /**
  * Implementation of a table interface for a modern bundle
@@ -10,7 +9,7 @@ import ru.patterns.factory.Plane;
  */
 public class ModernTable implements Table {
 
-    private static final Logger LOGGER = LogManager.getLogger(Plane.class);
+    private static final Logger LOGGER = LogManager.getLogger(ModernTable.class);
 
     @Override
     public Integer legsCount() {
