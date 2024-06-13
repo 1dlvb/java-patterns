@@ -10,9 +10,9 @@ class ElectricGuitarBuilderTest {
     @Test
     void isNameSetViaGuitarBuilder() {
         ElectricGuitarBuilder guitarBuilder = new ElectricGuitarBuilder();
-        String actualName = guitarBuilder.setName("Gibson")
+        String actualName = guitarBuilder.setModelName("Gibson")
                 .build()
-                .getName();
+                .getModelName();
         Assertions.assertEquals("Gibson", actualName);
     }
 
@@ -74,7 +74,7 @@ class ElectricGuitarBuilderTest {
     @Test
     void isElectricGuitarBuilderCreatedInstanceIsEqualToGuitarInstance() {
         ElectricGuitarBuilder guitarBuilder = new ElectricGuitarBuilder();
-        Guitar actualGuitar = guitarBuilder.setName("Fender")
+        Guitar actualGuitar = guitarBuilder.setModelName("Fender")
                 .setPickups(List.of(PickupType.SINGLE, PickupType.SINGLE, PickupType.SINGLE))
                 .setColor(GuitarColor.OLIVE)
                 .setGuitarBodyWood(GuitarBodyWood.MAHOGANY)
@@ -83,7 +83,29 @@ class ElectricGuitarBuilderTest {
                 .build();
 
         Guitar expectedGuitar = new Guitar();
-        expectedGuitar.setName("Fender");
+        expectedGuitar.setModelName("Fender");
+        expectedGuitar.setNumberOfStrings(6);
+        expectedGuitar.setPickups(List.of(PickupType.SINGLE, PickupType.SINGLE, PickupType.SINGLE));
+        expectedGuitar.setColor(GuitarColor.OLIVE);
+        expectedGuitar.setGuitarBodyWood(GuitarBodyWood.MAHOGANY);
+        expectedGuitar.setGuitarNeckWood(GuitarNeckWood.MAPLE);
+        expectedGuitar.setHasWhammyBar(false);
+
+        Assertions.assertEquals(expectedGuitar, actualGuitar);
+    }
+    @Test
+    void isInstanceCreatedByBuilderFromGuitarClassIsEqualToGuitarInstance() {
+        Guitar actualGuitar = new Guitar.Builder()
+                .setModelName("Fender")
+                .setPickups(List.of(PickupType.SINGLE, PickupType.SINGLE, PickupType.SINGLE))
+                .setColor(GuitarColor.OLIVE)
+                .setGuitarBodyWood(GuitarBodyWood.MAHOGANY)
+                .setGuitarNeckWood(GuitarNeckWood.MAPLE)
+                .setHasWhammyBar(false)
+                .build();
+
+        Guitar expectedGuitar = new Guitar();
+        expectedGuitar.setModelName("Fender");
         expectedGuitar.setNumberOfStrings(6);
         expectedGuitar.setPickups(List.of(PickupType.SINGLE, PickupType.SINGLE, PickupType.SINGLE));
         expectedGuitar.setColor(GuitarColor.OLIVE);
