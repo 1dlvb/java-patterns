@@ -11,6 +11,7 @@ public class Plane implements FlyingTransport {
 
     private static final Logger LOGGER = LogManager.getLogger(Plane.class);
     private static final int CRUISING_SPEED = 300;
+    private static final int ACCELERATION_RATE = 100;
     @Override
     public void deliver() {
         LOGGER.info("delivering by plane...");
@@ -18,7 +19,7 @@ public class Plane implements FlyingTransport {
 
     @Override
     public void takeOff() {
-        for (int currentSpeed = 0; currentSpeed < CRUISING_SPEED; currentSpeed += 100) {
+        for (int currentSpeed = 0; currentSpeed < CRUISING_SPEED; currentSpeed += ACCELERATION_RATE) {
             LOGGER.info("Acceleration on takeoff. Speed is {} km/h...", currentSpeed);
         }
         LOGGER.info("The plane took off successfully.");
@@ -31,7 +32,7 @@ public class Plane implements FlyingTransport {
 
     @Override
     public void land() {
-        for (int currentSpeed = CRUISING_SPEED; currentSpeed > 0; currentSpeed -= 100) {
+        for (int currentSpeed = CRUISING_SPEED; currentSpeed > 0; currentSpeed -= ACCELERATION_RATE) {
             LOGGER.info("Slowing down on landing... Speed is {} km/h...\n", currentSpeed);
         }
         LOGGER.info("The plane landed successfully.");

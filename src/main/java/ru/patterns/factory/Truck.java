@@ -11,6 +11,7 @@ public class Truck implements RollingTransport {
 
     private static final Logger LOGGER = LogManager.getLogger(Truck.class);
     private static final int CRUISING_SPEED = 100;
+    private static final int ACCELERATION_RATE = 50;
 
     @Override
     public void deliver() {
@@ -25,7 +26,7 @@ public class Truck implements RollingTransport {
     @Override
     public void accelerate() {
 
-        for (int currentSpeed = 0; currentSpeed < CRUISING_SPEED; currentSpeed += 50) {
+        for (int currentSpeed = 0; currentSpeed < CRUISING_SPEED; currentSpeed += ACCELERATION_RATE) {
             LOGGER.info("The car is accelerating. The CRUISING_SPEED is {} km/h...", currentSpeed);
         }
 
@@ -34,7 +35,7 @@ public class Truck implements RollingTransport {
     @Override
     public void brake() {
 
-        for (int currentSpeed = CRUISING_SPEED; currentSpeed > 0; currentSpeed -= 50) {
+        for (int currentSpeed = CRUISING_SPEED; currentSpeed > 0; currentSpeed -= ACCELERATION_RATE) {
             LOGGER.info("The car is breaking. The CRUISING_SPEED is {} km/h...", currentSpeed);
         }
     }
