@@ -1,4 +1,4 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 /**
  * Factory for creating set of furniture.

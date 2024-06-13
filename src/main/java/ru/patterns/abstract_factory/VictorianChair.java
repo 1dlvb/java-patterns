@@ -1,14 +1,14 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.patterns.factory.Plane;
 
 /**
- * Implementation of a table interface for a modern bundle
+ * Implementation of a chair interface for a Victorian bundle
  * @author Matushkin Anton
  */
-public class ModernTable implements Table {
+public class VictorianChair implements Chair {
 
     private static final Logger LOGGER = LogManager.getLogger(Plane.class);
 
@@ -18,8 +18,8 @@ public class ModernTable implements Table {
     }
 
     @Override
-    public void sitAt() {
-        LOGGER.info("You sat down at the Modern table...");
+    public void sitOn() {
+        LOGGER.info("You sat down on the Victorian chair...");
     }
 
 }

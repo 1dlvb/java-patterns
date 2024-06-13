@@ -1,4 +1,4 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

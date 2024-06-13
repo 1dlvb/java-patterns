@@ -1,25 +1,25 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.patterns.factory.Plane;
 
 /**
- * Implementation of a chair interface for a modern bundle
+ * Implementation of a table interface for a modern bundle
  * @author Matushkin Anton
  */
-public class ModernChair implements Chair {
+public class ModernTable implements Table {
 
     private static final Logger LOGGER = LogManager.getLogger(Plane.class);
 
     @Override
     public Integer legsCount() {
-        return 3;
+        return 4;
     }
 
     @Override
-    public void sitOn() {
-        LOGGER.info("You sat down on the Modern chair...");
+    public void sitAt() {
+        LOGGER.info("You sat down at the Modern table...");
     }
 
 }

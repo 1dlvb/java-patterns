@@ -1,4 +1,4 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 /**
  * Furniture factory, that should be used to create Victorian furniture bundles

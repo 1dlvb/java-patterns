@@ -1,4 +1,4 @@
-package ru.patterns.abstractFactory;
+package ru.patterns.abstract_factory;
 
 /**
  * An interface serving sofas for the furniture bundle
