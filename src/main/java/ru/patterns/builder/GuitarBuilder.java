@@ -12,10 +12,10 @@ import java.util.List;
 public interface GuitarBuilder {
 
     /**
-     * @param name name of a guitar
+     * @param name name of a guitar model
      * @return GuitarBuilder
      */
-    GuitarBuilder setName(String name);
+    GuitarBuilder setModelName(String name);
 
     /**
      * @param numberOfStrings number of strings of a guitar.
