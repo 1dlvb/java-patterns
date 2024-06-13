@@ -10,15 +10,27 @@ import java.util.Objects;
  * The Guitar class represents a guitar model with customizable features.
  * This class is used to create guitar objects with various parameters,
  * such as the number of strings, types of pickups, color, and materials for the body and neck.
- */
+ * <p>
+ * Example usage:
+ * <pre>
+ * Guitar myGuitar = new Guitar.Builder()
+ *                          .setModelName("Fender Stratocaster")
+ *                          .setNumberOfStrings(6)
+ *                          .setPickups(List.of(PickupType.SINGLE))
+ *                          .setColor(GuitarColor.BLACK)
+ *                          .setNeckWood(GuitarNeckWood.MAPLE)
+ *                          .setBodyWood(GuitarBodyWood.ALDER)
+ *                          .setWhammyBar(true)
+ *                          .build();
+ * </pre>
+* </p>
+* @author Matushkin Anton
+*/
 public class Guitar {
 
     private static final Logger LOGGER = LogManager.getLogger(Guitar.class);
 
-    /**
-     * Name of a guitar model
-     */
-    private String name;
+    private String modelName;
 
     /**
      * Amount of strings of a guitar
@@ -59,7 +71,7 @@ public class Guitar {
 
     /**
      * Constructor for creating a Guitar object with specified parameters.
-     * @param guitarName The name of the guitar brand.
+     * @param modelName The modelName of the guitar brand.
      * @param numberOfStrings The number of strings on the guitar.
      * @param pickups The list of guitar pickups.
      * @param color The color of the guitar.
@@ -67,10 +79,10 @@ public class Guitar {
      * @param bodyWood The material of the guitar body.
      * @param hasWhammyBar Whether the guitar has a whammy bar.
      */
-    public Guitar(String guitarName, int numberOfStrings, List<PickupType> pickups,
+    public Guitar(String modelName, int numberOfStrings, List<PickupType> pickups,
                   GuitarColor color, GuitarNeckWood neckWood, GuitarBodyWood bodyWood,
                   Boolean hasWhammyBar) {
-        this.name = guitarName;
+        this.modelName = modelName;
         this.numberOfStrings = numberOfStrings;
         this.pickups = pickups;
         this.color = color;
@@ -88,7 +100,7 @@ public class Guitar {
             return false;
         }
         Guitar guitar = (Guitar) o;
-        return numberOfStrings == guitar.numberOfStrings && Objects.equals(name, guitar.name)
+        return numberOfStrings == guitar.numberOfStrings && Objects.equals(modelName, guitar.modelName)
                 && Objects.equals(pickups, guitar.pickups) && color == guitar.color
                 && guitarNeckWood == guitar.guitarNeckWood && guitarBodyWood == guitar.guitarBodyWood
                 && Objects.equals(hasWhammyBar, guitar.hasWhammyBar);
@@ -96,7 +108,7 @@ public class Guitar {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, numberOfStrings, pickups, color, guitarNeckWood, guitarBodyWood, hasWhammyBar);
+        return Objects.hash(modelName, numberOfStrings, pickups, color, guitarNeckWood, guitarBodyWood, hasWhammyBar);
     }
 
     /**
@@ -146,12 +158,12 @@ public class Guitar {
         this.guitarBodyWood = guitarBodyWood;
     }
 
-    public String getName() {
-        return name;
+    public String getModelName() {
+        return modelName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 
     public Boolean getHasWhammyBar() {
@@ -160,6 +172,84 @@ public class Guitar {
 
     public void setHasWhammyBar(Boolean hasWhammyBar) {
         this.hasWhammyBar = hasWhammyBar;
+    }
+
+    /**
+     * Internal builder for guitars
+     */
+    public static class Builder {
+
+        private String modelName;
+
+        /**
+         * NULL by default.
+         */
+        private List<PickupType> pickups;
+
+        /**
+         * Default value for strings for electric guitar is 6
+         */
+        private int numberOfStrings = 6;
+
+        /**
+         * Default color for electric guitar is sunburst
+         */
+        private GuitarColor color = GuitarColor.SUNBURST;
+
+        /**
+         * Default color for neck wood of an electric guitar is maple
+         */
+        private GuitarNeckWood guitarNeckWood = GuitarNeckWood.MAPLE;
+
+        /**
+         * Default color for body wood of an electric guitar is maple
+         */
+        private GuitarBodyWood guitarBodyWood = GuitarBodyWood.ASH;
+
+        /**
+         * Guitar has no whammy bar by default
+         */
+        private Boolean hasWhammyBar = false;
+
+        public Builder setModelName(String modelName) {
+            this.modelName = modelName;
+            return this;
+        }
+
+        public Builder setNumberOfStrings(int numberOfStrings) {
+            this.numberOfStrings = numberOfStrings;
+            return this;
+        }
+
+        public Builder setPickups(List<PickupType> pickups) {
+            this.pickups = pickups;
+            return this;
+        }
+
+        public Builder setColor(GuitarColor color) {
+            this.color = color;
+            return this;
+        }
+
+        public Builder setGuitarNeckWood(GuitarNeckWood neckWood) {
+            this.guitarNeckWood = neckWood;
+            return this;
+        }
+
+        public Builder setGuitarBodyWood(GuitarBodyWood bodyWood) {
+            this.guitarBodyWood = bodyWood;
+            return this;
+        }
+
+        public Builder setHasWhammyBar(Boolean hasWhammyBar) {
+            this.hasWhammyBar = hasWhammyBar;
+            return this;
+        }
+
+        public Guitar build() {
+            return new Guitar(modelName, numberOfStrings, pickups, color, guitarNeckWood,
+                    guitarBodyWood, hasWhammyBar);
+        }
     }
 
 }
